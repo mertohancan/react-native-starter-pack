@@ -1,128 +1,16 @@
-import React from "react";
-import { View, Dimensions, Image } from "react-native";
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import { createBottomTabNavigator } from "react-navigation-tabs";
-import { createDrawerNavigator } from "react-navigation-drawer";
+import React, {useContext} from 'react';
+import {ThemeProvider, ThemeContext} from './src/context/ThemeContext';
+import AppContainer from './src/AppContainer';
 
-import Profile from "./src/pages/Profile";
-import Home from "./src/pages/HomePage";
-import Discover from "./src/pages/Discover";
-import LeftMenu from "./src/pages/LeftMenu";
 
-const dw = Dimensions.get("window").width;
 
-const TabScreens = createBottomTabNavigator(
-  {
-    Home: {
-      screen: Home,
-      navigationOptions: () => ({
-        tabBarIcon: () => (
-          <View
-            style={{
-              width: dw / 3,
-              justifyContent: "center",
-              alignItems: "center",
-              height: 50
-            }}
-          >
-            <Image
-              source={require("./src/images/menu/home.png")}
-              style={{ width: 28, height: 28 }}
-              resizeMode="stretch"
-            />
-          </View>
-        )
-      })
-    },
 
-    Discover: {
-      screen: Discover,
-      navigationOptions: () => ({
-        tabBarIcon: () => (
-          <View
-            style={{
-              width: dw / 3,
-              justifyContent: "center",
-              alignItems: "center",
-              height: 50
-            }}
-          >
-            <Image
-              source={require("./src/images/menu/worldwide.png")}
-              style={{ width: 28, height: 28 }}
-              resizeMode="stretch"
-            />
-          </View>
-        )
-      })
-    },
+const App = () => {
+  return(
+    <ThemeProvider>
+      <AppContainer />
+    </ThemeProvider>
+  )
+}
 
-    Profile: {
-      screen: Profile,
-      navigationOptions: () => ({
-        tabBarIcon: () => (
-          <View
-            style={{
-              width: dw / 3,
-              justifyContent: "center",
-              alignItems: "center",
-              height: 50
-            }}
-          >
-            <Image
-              source={require("./src/images/menu/user.png")}
-              style={{ width: 28, height: 28 }}
-              resizeMode="stretch"
-            />
-          </View>
-        )
-      })
-    }
-  },
-  {
-    tabBarOptions: {
-      tabBarVisible: true,
-      showLabel: false,
-      activeTintColor: "#323232",
-      inactiveTintColor: "#C4C4C4",
-      style: {
-        backgroundColor: "white",
-        height: 66
-      }
-    }
-  }
-);
-
-const Drawer = createDrawerNavigator(
-  {
-    TabScreens
-  },
-  {
-    overlayColor: "#fff",
-    drawerBackgroundColor: "#263238",
-    drawerType: "slide",
-    drawerWidth: dw * 0.72,
-    drawerPosition: "left",
-    edgeWidth: 20,
-    drawerLockMode: "locked-closed",
-    contentOptions: {
-      activeTintColor: "#e91e63"
-    },
-    contentComponent: props => <LeftMenu props={props} />
-  }
-);
-
-const AppNavigator = createStackNavigator(
-  {
-    Drawer: { screen: Drawer },
-    Home,
-    Profile
-  },
-  {
-    initialRouteName: "Drawer",
-    headerMode: "none"
-  }
-);
-
-export default createAppContainer(AppNavigator);
+export default App;

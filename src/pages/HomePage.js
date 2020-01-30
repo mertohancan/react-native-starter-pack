@@ -1,15 +1,18 @@
-import React, { useState } from "react";
-import { SafeAreaView, Text } from "react-native";
+import React, { useState, useContext } from "react";
+import { SafeAreaView, Text, View } from "react-native";
 import Header from "../components/Header";
-
+import {ThemeContext} from "../context/ThemeContext";
 const HomePage = props => {
   const [name] = useState("Home");
+  const themeContext = useContext(ThemeContext)
   return (
     <>
       <SafeAreaView>
         <Header navigation={props.navigation} />
       </SafeAreaView>
-      <Text>Selam: {name}</Text>
+      <View style={{flex:1, backgroundColor: themeContext.theme }}>
+        <Text>Selam: {name}</Text>
+      </View>
     </>
   );
 };

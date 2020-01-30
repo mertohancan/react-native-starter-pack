@@ -1,7 +1,10 @@
-import React from "react";
+import React, {useContext}  from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
+import { ThemeContext } from '../context/ThemeContext';
 
 const LeftMenu = () => {
+  const themeContext = useContext(ThemeContext);
+
   return (
     <View style={{ flex: 1 }}>
       <View
@@ -32,17 +35,18 @@ const LeftMenu = () => {
           paddingLeft: 25
         }}
       >
-        <TouchableOpacity style={{ marginTop: 17 }}>
-          <Text style={{ fontSize: 18 }}>Anasayfa</Text>
+        <Text style={{textAlign:"center"}}>Uygulamanın temasını değiştirebilirsiniz.</Text>
+        <TouchableOpacity onPress={()=>themeContext.setTheme('#565656')} style={{ marginTop: 17, flexDirection:"row" }}>
+          <Text style={{ fontSize: 18 }}>Karanlık</Text>
+          <View style={{width:24, height:24, borderRadius: 5, backgroundColor:"#565656", marginLeft:8}} />
         </TouchableOpacity>
-        <TouchableOpacity style={{ marginTop: 17 }}>
-          <Text style={{ fontSize: 18 }}>Anasayfa</Text>
+        <TouchableOpacity  onPress={()=>themeContext.setTheme('#F0F0F0')} style={{ marginTop: 17, flexDirection:"row" }}>
+          <Text style={{ fontSize: 18 }}>Aydınlık</Text>
+          <View style={{width:24, height:24, borderRadius: 5, backgroundColor:"#F0F0F0", marginLeft:8}} />
         </TouchableOpacity>
-        <TouchableOpacity style={{ marginTop: 17 }}>
-          <Text style={{ fontSize: 18 }}>Anasayfa</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={{ marginTop: 17 }}>
-          <Text style={{ fontSize: 18 }}>Anasayfa</Text>
+        <TouchableOpacity  onPress={()=>themeContext.setTheme('#ABEEFF')} style={{ marginTop: 17, flexDirection:"row" }}>
+          <Text style={{ fontSize: 18 }}>Fantastik</Text>
+          <View style={{width:24, height:24, borderRadius: 5, backgroundColor:"#ABEEFF", marginLeft:8}} />
         </TouchableOpacity>
       </View>
       <View

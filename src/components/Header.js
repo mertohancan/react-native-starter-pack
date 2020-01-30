@@ -19,13 +19,13 @@ const Header = props => {
         onPress={() => props.navigation.openDrawer()}
       >
         <Image
-          source={require("../images/menu/menu.png")}
+          source={require("../images/menu/settings.png")}
           style={{ width: 24 }}
           resizeMode="contain"
         />
       </TouchableOpacity>
       <View style={cs.headerOrta} />
-      <TouchableOpacity style={cs.headerSag} />
+      <TouchableOpacity style={cs.headerSag}/>
     </View>
   );
 };
@@ -34,7 +34,8 @@ const cs = StyleSheet.create({
     height: 50,
     flexDirection: "row",
     borderBottomWidth: 0.5,
-    borderBottomColor: "#BBC6CE"
+    borderBottomColor: "#BBC6CE",
+    backgroundColor:"white"
   },
   menu: {
     width: 20,
