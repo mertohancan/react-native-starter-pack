@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import { View, Dimensions, Image } from "react-native";
-import { createAppContainer, ThemeContext } from "react-navigation";
+import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { createDrawerNavigator } from "react-navigation-drawer";
@@ -8,8 +8,6 @@ import Profile from "./pages/Profile";
 import Home from "./pages/HomePage";
 import Discover from "./pages/Discover";
 import LeftMenu from "./pages/LeftMenu";
-
-
 
 const dw = Dimensions.get("window").width;
 const TabScreens = createBottomTabNavigator(
@@ -113,20 +111,18 @@ const Drawer = createDrawerNavigator(
   }
 );
 
-
 const AppNavigator = createStackNavigator(
-    {
-      Drawer: { screen: Drawer },
-      Home,
-      Profile
-    },
-    {
-      initialRouteName: "Drawer",
-      headerMode: "none",
-      cardStyle: ({backgroundColor:"white"}),  
-    }
-  );
-
+  {
+    Drawer: { screen: Drawer },
+    Home,
+    Profile
+  },
+  {
+    initialRouteName: "Drawer",
+    headerMode: "none",
+    cardStyle: { backgroundColor: "white" }
+  }
+);
 
 const AppContainer = createAppContainer(AppNavigator);
 

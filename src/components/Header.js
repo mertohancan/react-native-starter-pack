@@ -4,7 +4,8 @@ import {
   Image,
   StyleSheet,
   TouchableOpacity,
-  StatusBar
+  StatusBar,
+  SafeAreaView
 } from "react-native";
 import { View } from "native-base";
 
@@ -12,7 +13,7 @@ const { width } = Dimensions.get("window");
 
 const Header = props => {
   return (
-    <View style={cs.header}>
+    <SafeAreaView style={cs.header}>
       <StatusBar backgroundColor="#E8E8E8" barStyle="light-content" />
       <TouchableOpacity
         style={cs.headerSol}
@@ -25,8 +26,8 @@ const Header = props => {
         />
       </TouchableOpacity>
       <View style={cs.headerOrta} />
-      <TouchableOpacity style={cs.headerSag}/>
-    </View>
+      <TouchableOpacity style={cs.headerSag} />
+    </SafeAreaView>
   );
 };
 const cs = StyleSheet.create({
@@ -35,7 +36,7 @@ const cs = StyleSheet.create({
     flexDirection: "row",
     borderBottomWidth: 0.5,
     borderBottomColor: "#BBC6CE",
-    backgroundColor:"white"
+    backgroundColor: "white"
   },
   menu: {
     width: 20,

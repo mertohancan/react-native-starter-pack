@@ -21,6 +21,7 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "no-use-before-define": 0,
+    "no-unused-vars": 0,
     "jsx-a11y/href-no-hash": [
       "off"
     ],
